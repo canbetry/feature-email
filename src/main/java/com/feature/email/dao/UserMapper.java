@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 @Mapper
 public interface UserMapper {
 
-    @Insert("insert into email_user (id,user_name,user_password,user_email,user_type,cust_name) " +
-            "values (#{id},#{userName},#{userPassword},#{userEmail},#{userType},#{custName})")
+    @Insert("insert into email_user (id,user_name,user_password,salt,user_email,user_type,cust_name) " +
+            "values (#{id},#{userName},#{userPassword},#{salt},#{userEmail},#{userType},#{custName})")
     @Options(useGeneratedKeys = true,keyProperty = "id")
     public Integer saveUser(User user);
 }

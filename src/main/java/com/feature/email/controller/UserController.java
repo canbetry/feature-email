@@ -1,8 +1,9 @@
 package com.feature.email.controller;
 
 import com.feature.email.common.Response.ResponseEntity;
-import com.feature.email.entity.User;
+import com.feature.email.entityVo.UserVo;
 import com.feature.email.service.UserService;
+import com.feature.email.utils.CommonBeanUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.log4j.Log4j2;
@@ -23,7 +24,8 @@ public class UserController {
 
     @ApiOperation("注册用户接口")
     @RequestMapping("/register")
-    public ResponseEntity<User> saveUser(@RequestBody User user) {
-        return userService.saveUser(user);
+    public ResponseEntity<UserVo> saveUser(@RequestBody UserVo userVo) {
+        CommonBeanUtils.convertEmptyStringToNull(userVo);
+        return userService.saveUser(userVo);
     }
 }

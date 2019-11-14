@@ -1,37 +1,48 @@
 package com.feature.email.common.Response;
 
 import com.feature.email.common.Enum.Constant;
+import com.feature.email.common.inteface.BaseBussinessStatus;
 
 import java.io.Serializable;
-import java.util.HashMap;
 
 /**
  * 自定义返回响应类
  */
-public class ResponseEntity<T> extends HashMap<String, Object> implements Serializable {
+public class ResponseEntity<T> implements Serializable {
 
     public static final ResponseEntity SUCCEED = new ResponseEntity(Constant.SUCCESS_CODE, Constant.SUCCESS_MESSAGE);
     public static final ResponseEntity Failed = new ResponseEntity(Constant.ERROR_CODE, Constant.ERROR_MESSAGE);
 
-    public ResponseEntity(int status, String massage) {
-        super();
-        this.put(Constant.STATUS, status).put(Constant.STATUS, massage);
+    private int status;
+    private T content;
+    private String message;
+
+    public ResponseEntity(int status, String message) {
+        this.status = status;
+        this.message = message;
     }
 
     public ResponseEntity(int status, T content) {
-        super();
-        this.put(Constant.STATUS, status).put(Constant.CONTENT, content);
+        this.status = status;
+        this.content = content;
     }
 
     public ResponseEntity(int status, String message, T content) {
-        super();
-        this.put(Constant.STATUS, status).put(Constant.MESSAGE, message).put(Constant.CONTENT, content);
+        this.status = status;
+        this.message = message;
+        this.content = content;
     }
 
+    public int getStatus() {
+        return this.status;
+    }
 
-    public ResponseEntity put(String key, Object value) {
-        super.put(key, value);
-        return this;
+    public T getContent() {
+        return this.content;
+    }
+
+    public String getMessage() {
+        return this.message;
     }
 
     public static ResponseEntity response(int i, String message) {
@@ -67,7 +78,15 @@ public class ResponseEntity<T> extends HashMap<String, Object> implements Serial
     }
 
     public boolean isNotSuccess(ResponseEntity<T> responseEntity) {
-        return (Constant.SUCCESS_CODE != (Integer) responseEntity.get(Constant.STATUS));
+        return (Constant.SUCCESS_CODE.equals(responseEntity.getStatus()));
+    }
+
+    public boolean isSuccess(ResponseEntity<T> responseEntity) {
+        return (Constant.SUCCESS_CODE.equals(responseEntity.getStatus()));
+    }
+
+    public static <T> ResponseEntity<T> errorInfo(BaseBussinessStatus baseBussinessStatus) {
+        return new ResponseEntity<>(baseBussinessStatus.getCode(), baseBussinessStatus.getMessage());
     }
 
 }

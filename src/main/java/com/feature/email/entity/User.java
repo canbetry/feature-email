@@ -13,6 +13,8 @@ public class User {
     private String userName;
     @ApiModelProperty("用户登陆密码，用户凭此登录")
     private String userPassword;
+    @ApiModelProperty(value = "用户独有盐值", required = false)
+    private String salt;
     @ApiModelProperty("用户邮箱，用户通过此邮箱找回密码，更新密码")
     private String userEmail;
     @ApiModelProperty("用户类型:1.管理员，2:普通用户")
