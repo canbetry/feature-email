@@ -38,7 +38,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         if (isLogin(request)) {
             return true;
         } else {
-            response.sendRedirect(request.getContextPath() + "/user/login");    //重定向登录页
+            //登录接口地址："http://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath() + "/user/login"
+//            response.sendRedirect();    //重定向登录页
             return false;
         }
     }
