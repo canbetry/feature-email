@@ -1,4 +1,4 @@
-package com.feature.email.entityVo;
+package com.feature.email.entityVo.user;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

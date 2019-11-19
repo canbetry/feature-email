@@ -1,6 +1,7 @@
 package com.feature.email.utils;
 
 import com.feature.email.common.Exception.DIYException;
+import org.springframework.util.ObjectUtils;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -46,5 +47,11 @@ public class CommonBeanUtils {
         return resFields;
     }
 
-    ;
+    public static boolean objectIsEmpty(Object object) {
+        return ObjectUtils.isEmpty(object);
+    }
+
+    public static boolean objectIsNotEmpty(Object object) {
+        return !objectIsEmpty(object);
+    }
 }

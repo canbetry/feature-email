@@ -1,10 +1,11 @@
 package com.feature.email;
 
-import com.feature.email.dao.UserMapper;
-import com.feature.email.entity.User;
+import com.feature.email.dao.user.UserMapper;
+import com.feature.email.entity.user.User;
 import com.feature.email.utils.Base64Utils;
 import com.feature.email.utils.CommonBeanUtils;
 import lombok.extern.log4j.Log4j2;
+import org.apache.commons.lang3.ObjectUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,7 +22,9 @@ class FeatureEmailApplicationTests {
 
     @Test
     public static void main(String[] args) {
-
+        User userMsg = new User();
+        userMsg.setUserName("saa");
+        System.out.println(ObjectUtils.allNotNull(userMsg));
     }
 
     @Test
@@ -40,9 +43,14 @@ class FeatureEmailApplicationTests {
         System.out.println(user.toString());
     }
 
+    @Test
+    public void nullTest() {
+        User userMsg = userMapper.queryByUserName("dsa");
+        System.out.println(org.springframework.util.ObjectUtils.isEmpty(userMsg));
+    }
 
     @Test
-    public void utilsTest(){
+    public void utilsTest() {
         User user = new User();
         user.setUserName("");
         CommonBeanUtils.convertEmptyStringToNull(user);

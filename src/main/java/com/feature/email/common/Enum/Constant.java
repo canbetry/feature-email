@@ -17,4 +17,7 @@ public class Constant {
     //逻辑删除标志
     public final static char IS_DELETED = '1';
     public final static char NOT_DELETED = '0';
+
+    //session参数
+    public final static String SESSION_INFO_PARAMS = "user_session_info";
 }
