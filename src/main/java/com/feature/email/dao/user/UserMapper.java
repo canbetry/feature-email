@@ -13,16 +13,17 @@ public interface UserMapper {
     @Options(useGeneratedKeys = true, keyProperty = "id")
     Integer saveUser(User user);
 
+
+    //    @Results({
+//            @Result(id = true, column = "id", property = "id"),
+//            @Result(column = "user_name", property = "userName"),
+//            @Result(column = "user_password", property = "userPassword"),
+//            @Result(column = "salt", property = "salt"),
+//            @Result(column = "user_email", property = "userEmail"),
+//            @Result(column = "user_type", property = "userType"),
+//            @Result(column = "cust_name", property = "custName"),
+//            @Result(column = "is_deleted", property = "isDeleted")
+//    })
     @Select("select " + resultMap + " from email_user where is_deleted = '0' and user_name = #{userName}")
-    @Results({
-            @Result(id = true, column = "id", property = "id"),
-            @Result(column = "user_name", property = "userName"),
-            @Result(column = "user_password", property = "userPassword"),
-            @Result(column = "salt", property = "salt"),
-            @Result(column = "user_email", property = "userEmail"),
-            @Result(column = "user_type", property = "userType"),
-            @Result(column = "cust_name", property = "custName"),
-            @Result(column = "is_deleted", property = "isDeleted")
-    })
     User queryByUserName(@Param("userName") String userName);
 }

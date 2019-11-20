@@ -54,7 +54,7 @@ class FeatureEmailApplicationTests {
 
     @Test
     public void nullTest() {
-        User userMsg = userMapper.queryByUserName("dsa");
+        User userMsg = userMapper.queryByUserName("luoyunlong");
         System.out.println(org.springframework.util.ObjectUtils.isEmpty(userMsg));
     }
 
