@@ -5,7 +5,6 @@ import com.feature.email.entity.user.User;
 import com.feature.email.utils.Base64Utils;
 import com.feature.email.utils.CommonBeanUtils;
 import lombok.extern.log4j.Log4j2;
-import org.apache.commons.lang3.ObjectUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,9 +21,19 @@ class FeatureEmailApplicationTests {
 
     @Test
     public static void main(String[] args) {
-        User userMsg = new User();
-        userMsg.setUserName("saa");
-        System.out.println(ObjectUtils.allNotNull(userMsg));
+        //十进制转二进制
+        FeatureEmailApplicationTests featureEmailApplicationTests = new FeatureEmailApplicationTests();
+        long convert = featureEmailApplicationTests.convert(10000);
+        System.out.println(convert);
+    }
+
+
+    private long convert(long decimal) {
+        if (decimal >= 2) {
+            return this.convert(decimal / 2) * 10 + decimal % 2;
+        } else {
+            return decimal;
+        }
     }
 
     @Test
