@@ -1,0 +1,8 @@
+2019/11/25 16:59:47 [emerg] 12312#6476: CreateFile() "E:\feature-email\前端文件夹\nginx-1.16.1/conf/nginx.conf" failed (1113: No mapping for the Unicode character exists in the target multi-byte code page)
+2019/11/25 17:00:36 [emerg] 5452#1244: CreateFile() "E:\feature-email\前端文件夹\nginx-1.16.1/conf/nginx.conf" failed (1113: No mapping for the Unicode character exists in the target multi-byte code page)
+2019/11/25 17:01:30 [emerg] 13164#1100: CreateFile() "E:\feature-email\前端文件夹\nginx-1.16.1/conf/nginx.conf" failed (1113: No mapping for the Unicode character exists in the target multi-byte code page)
+2019/11/25 17:04:08 [emerg] 13920#13492: CreateFile() "E:\feature-email\前端文件夹\nginx-1.16.1/conf/nginx.conf" failed (1113: No mapping for the Unicode character exists in the target multi-byte code page)
+2019/11/25 17:04:16 [emerg] 4168#14100: CreateFile() "E:\feature-email\前端文件夹\nginx-1.16.1/conf/nginx.conf" failed (1113: No mapping for the Unicode character exists in the target multi-byte code page)
+2019/11/25 17:08:37 [notice] 13832#13580: signal process started
+2019/11/25 17:10:06 [error] 8544#13960: *1 CreateFile() "E:\feature-email\front_fold\nginx-1.16.1/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2019/11/25 17:10:27 [notice] 9624#13796: signal process started
