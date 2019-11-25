@@ -11,8 +11,21 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * 自定义过滤，登录拦截
+ */
 @Log4j2
 public class LoginInterceptor extends HandlerInterceptorAdapter {
+
+    private static List<String> loginUrl;
+
+    static {
+        loginUrl = new ArrayList<>();
+        loginUrl.add("/user/register");
+        loginUrl.add("/user/login");
+    }
+
 
     /**
      * 登录验证：验证用户是否已登录
@@ -48,13 +61,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         return request.getSession().getAttribute(Constant.SESSION_INFO_PARAMS) != null;
     }
 
-    private static List<String> loginUrl;
-
-    static {
-        loginUrl = new ArrayList<>();
-        loginUrl.add("/user/register");
-        loginUrl.add("/user/login");
-    }
 
     private static boolean isLoginUrl(String requestUrl) {
         for (String url : loginUrl) {

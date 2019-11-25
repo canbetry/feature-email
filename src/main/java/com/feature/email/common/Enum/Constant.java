@@ -1,6 +1,22 @@
 package com.feature.email.common.Enum;
 
+
+/**
+ * 常量池
+ */
 public class Constant {
+    //常用整数
+    public final static Integer COMMON_NUMBER_ZERO = 0;
+    public final static Integer COMMON_NUMBER_ONE = 1;
+    public final static Integer COMMON_NUMBER_TWO = 2;
+    public final static Integer COMMON_NUMBER_THREE = 3;
+    public final static Integer COMMON_NUMBER_FOUR = 4;
+    public final static Integer COMMON_NUMBER_FIVE = 5;
+    public final static Integer COMMON_NUMBER_SIX = 6;
+    public final static Integer COMMON_NUMBER_SEVEN = 7;
+    public final static Integer COMMON_NUMBER_MB = 1024;
+
+
     //统一信息识别码
     public final static Integer SUCCESS_CODE = 200;
     public final static Integer ERROR_CODE = 1;
@@ -20,4 +36,22 @@ public class Constant {
 
     //session参数
     public final static String SESSION_INFO_PARAMS = "user_session_info";
+
+    //系统固有属性
+    public final static String SYSTEM_PROPERTY = "os.name";
+    public final static String WIN_SYSTEM_VERSION_LOWER_CASE = "win";
+
+    //RSA
+    public final static String STRING_RSA = "RSA";
+
+    //rsa路径
+    public final static String WIN_RSA_PRIVATE_KEY_PATH = "\\rsaPriKey.key";
+    public final static String LINUX_RSA_PRIVATE_KEY_PATH = "/rsaPriKey.key";
+
+    public final static String WIN_RSA_PUBLIC_KEY_PATH = "\\rsaPubKey.key";
+    public final static String LINUX_RSA_PUBLIC_KEY_PATH = "/rsaPubKey.key";
+
+    //系统编码
+    public final static String CODING_TYPE_UTF8 = "UTF-8";
+
 }

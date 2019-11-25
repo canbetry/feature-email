@@ -1,5 +1,9 @@
 package com.feature.email.common.Exception;
 
+
+/**
+ * 自定义异常类
+ */
 public class DIYException extends RuntimeException {
     public DIYException() {
         super();

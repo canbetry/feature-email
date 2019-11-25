@@ -4,6 +4,10 @@ import com.feature.email.common.Exception.DIYException;
 
 import java.io.IOException;
 
+
+/**
+ * RSA封装工具类
+ */
 public class RsaUtils {
 
     /**

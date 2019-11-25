@@ -47,10 +47,23 @@ public class CommonBeanUtils {
         return resFields;
     }
 
+    /**
+     * 判断对象是否为空
+     *
+     * @param object
+     * @return
+     */
     public static boolean objectIsEmpty(Object object) {
         return ObjectUtils.isEmpty(object);
     }
 
+
+    /**
+     * 判断对象不为空
+     *
+     * @param object
+     * @return
+     */
     public static boolean objectIsNotEmpty(Object object) {
         return !objectIsEmpty(object);
     }

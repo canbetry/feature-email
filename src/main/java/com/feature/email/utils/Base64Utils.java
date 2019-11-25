@@ -5,6 +5,9 @@ import org.apache.commons.lang3.RandomUtils;
 import java.io.UnsupportedEncodingException;
 import java.util.Base64;
 
+/**
+ * Base64工具类
+ */
 public class Base64Utils {
 
     final static Base64.Decoder decoder = Base64.getDecoder();
@@ -24,7 +27,7 @@ public class Base64Utils {
     }
 
 
-    //随机生成8位数盐值
+    //随机生成8位数盐值，用于特殊信息加密
     public static String generateMixRandomCode() {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < 8; i++) {

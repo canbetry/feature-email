@@ -19,6 +19,10 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 
+
+/**
+ * Spring5开始，spring默认使用CGLIB动态代理，因此不需要通过实现接口进行依赖注入和查找
+ */
 @Service("userService")
 @Log4j2
 @SuppressWarnings("all")

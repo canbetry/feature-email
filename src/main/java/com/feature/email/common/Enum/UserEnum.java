@@ -2,6 +2,10 @@ package com.feature.email.common.Enum;
 
 import com.feature.email.common.inteface.BaseBussinessStatus;
 
+
+/**
+ * 用户模块异常信息
+ */
 public enum UserEnum implements BaseBussinessStatus {
     $encryptPwdFail(1001, "加密密码失败"),
     $decryptPwdFail(1002, "解密密码失败"),

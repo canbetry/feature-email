@@ -1,5 +1,8 @@
 package com.feature.email.utils;
 
+import com.feature.email.common.Enum.BaseErrorMsg;
+import com.feature.email.common.Enum.Constant;
+import lombok.extern.log4j.Log4j2;
 import org.apache.tomcat.util.codec.binary.Base64;
 
 import javax.crypto.Cipher;
@@ -12,7 +15,12 @@ import java.security.spec.X509EncodedKeySpec;
 import java.util.HashMap;
 import java.util.Map;
 
+
+/**
+ * RSA加密工具类
+ */
 @SuppressWarnings("all")
+@Log4j2
 public class RsaEncrypt {
 
     private static Map<Integer, String> keyMap = new HashMap<Integer, String>();  //用于封装随机产生的公钥与私钥
@@ -36,7 +44,8 @@ public class RsaEncrypt {
      * @throws IOException
      */
     public final static String getPubKeyString() throws IOException {
-        String pubKeyPath = System.getProperty("os.name").toLowerCase().startsWith("win") ? windosPubKeyPath : linuxPubKeyPath;
+        String pubKeyPath = System.getProperty(Constant.SYSTEM_PROPERTY).toLowerCase().
+                startsWith(Constant.WIN_SYSTEM_VERSION_LOWER_CASE) ? windosPubKeyPath : linuxPubKeyPath;
         return readFile(pubKeyPath);
     }
 
@@ -48,7 +57,8 @@ public class RsaEncrypt {
      * @throws IOException
      */
     public final static String getPrikeyString() throws IOException {
-        String priKeyPath = System.getProperty("os.name").toLowerCase().startsWith("win") ? windosPriKeyPath : linuxPriKeyPath;
+        String priKeyPath = System.getProperty(Constant.SYSTEM_PROPERTY).toLowerCase().
+                startsWith(Constant.WIN_SYSTEM_VERSION_LOWER_CASE) ? windosPriKeyPath : linuxPriKeyPath;
         return readFile(priKeyPath);
     }
 
@@ -82,11 +92,11 @@ public class RsaEncrypt {
     public final static String encrypt(String str, String privateKey) throws Exception {
         //base64编码的公钥
         byte[] decoded = Base64.decodeBase64(privateKey);
-        RSAPublicKey pubKey = (RSAPublicKey) KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(decoded));
+        RSAPublicKey pubKey = (RSAPublicKey) KeyFactory.getInstance(Constant.STRING_RSA).generatePublic(new X509EncodedKeySpec(decoded));
         //RSA加密
-        Cipher cipher = Cipher.getInstance("RSA");
+        Cipher cipher = Cipher.getInstance(Constant.STRING_RSA);
         cipher.init(Cipher.ENCRYPT_MODE, pubKey);
-        String outStr = Base64.encodeBase64String(cipher.doFinal(str.getBytes("UTF-8")));
+        String outStr = Base64.encodeBase64String(cipher.doFinal(str.getBytes(Constant.CODING_TYPE_UTF8)));
         return outStr;
     }
 
@@ -101,12 +111,12 @@ public class RsaEncrypt {
      */
     public final static String decrypt(String str, String publicKey) throws Exception {
         //64位解码加密后的字符串
-        byte[] inputByte = Base64.decodeBase64(str.getBytes("UTF-8"));
+        byte[] inputByte = Base64.decodeBase64(str.getBytes(Constant.CODING_TYPE_UTF8));
         //base64编码的私钥
         byte[] decoded = Base64.decodeBase64(publicKey);
-        RSAPrivateKey priKey = (RSAPrivateKey) KeyFactory.getInstance("RSA").generatePrivate(new PKCS8EncodedKeySpec(decoded));
+        RSAPrivateKey priKey = (RSAPrivateKey) KeyFactory.getInstance(Constant.STRING_RSA).generatePrivate(new PKCS8EncodedKeySpec(decoded));
         //RSA解密
-        Cipher cipher = Cipher.getInstance("RSA");
+        Cipher cipher = Cipher.getInstance(Constant.STRING_RSA);
         cipher.init(Cipher.DECRYPT_MODE, priKey);
         String outStr = new String(cipher.doFinal(inputByte));
         return outStr;
@@ -115,6 +125,7 @@ public class RsaEncrypt {
 
     /**
      * 生成密钥、保存密钥、验证密钥
+     *
      * @param args
      * @throws Exception
      */
@@ -123,11 +134,11 @@ public class RsaEncrypt {
         genKeyPair();
         //加密字符串
         String message = "luoyunlong";
-        System.out.println("随机生成的公钥为:" + keyMap.get(0));
-        System.out.println("随机生成的私钥为:" + keyMap.get(1));
-        String messageEn = encrypt(message, keyMap.get(0));
+        System.out.println("随机生成的公钥为:" + keyMap.get(Constant.COMMON_NUMBER_ZERO));
+        System.out.println("随机生成的私钥为:" + keyMap.get(Constant.COMMON_NUMBER_ONE));
+        String messageEn = encrypt(message, keyMap.get(Constant.COMMON_NUMBER_ZERO));
         System.out.println(message + "\t加密后的字符串为:" + messageEn);
-        String messageDe = decrypt(messageEn, keyMap.get(1));
+        String messageDe = decrypt(messageEn, keyMap.get(Constant.COMMON_NUMBER_ONE));
         System.out.println("还原后的字符串为:" + messageDe);
     }
 
@@ -139,9 +150,9 @@ public class RsaEncrypt {
      */
     public final static void genKeyPair() throws NoSuchAlgorithmException, FileNotFoundException {
         // KeyPairGenerator类用于生成公钥和私钥对，基于RSA算法生成对象
-        KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("RSA");
+        KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance(Constant.STRING_RSA);
         // 初始化密钥对生成器，密钥大小为96-1024位
-        keyPairGen.initialize(1024, new SecureRandom());
+        keyPairGen.initialize(Constant.COMMON_NUMBER_MB, new SecureRandom());
         // 生成一个密钥对，保存在keyPair中
         KeyPair keyPair = keyPairGen.generateKeyPair();
         RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();   // 得到私钥
@@ -150,59 +161,62 @@ public class RsaEncrypt {
         // 得到私钥字符串
         String privateKeyString = new String(Base64.encodeBase64((privateKey.getEncoded())));
         // 将公钥和私钥保存到Map
-        keyMap.put(0, publicKeyString);  //0表示公钥
-        keyMap.put(1, privateKeyString);  //1表示私钥
+        keyMap.put(Constant.COMMON_NUMBER_ZERO, publicKeyString);  //0表示公钥
+        keyMap.put(Constant.COMMON_NUMBER_ONE, privateKeyString);  //1表示私钥
         //将密钥保存至本地
         String keyFilePath = null;
-        String property = System.getProperty("os.name");
-        keyFilePath = property.toLowerCase().startsWith("win") ? keyFilePathWindows : keyFilePathLinux;
+        String property = System.getProperty(Constant.SYSTEM_PROPERTY);
+        keyFilePath = property.toLowerCase().startsWith(Constant.WIN_SYSTEM_VERSION_LOWER_CASE) ?
+                keyFilePathWindows : keyFilePathLinux;
 
         //路径
         File keyFile = new File(keyFilePath);
         if (keyFile.exists()) {
-            System.out.println("文件已存在");
+            System.out.println(BaseErrorMsg.fileExists);
         } else {
             keyFile.mkdirs();
         }
-        File priKey = new File(keyFile + (property.toLowerCase().startsWith("win") ? "\\rsaPriKey.key" : "/rsaPriKey.key"));
+        File priKey = new File(keyFile + (property.toLowerCase().startsWith(Constant.WIN_SYSTEM_VERSION_LOWER_CASE)
+                ? Constant.WIN_RSA_PRIVATE_KEY_PATH : Constant.LINUX_RSA_PRIVATE_KEY_PATH));
         if (!priKey.exists()) {
             try {
                 priKey.createNewFile();
             } catch (IOException e) {
-                e.printStackTrace();
+                log.error(BaseErrorMsg.IOEXCEPTION, e);
             }
         }
-        File pubKey = new File(keyFile + (property.toLowerCase().startsWith("win") ? "\\rsaPubKey.key" : "/rsaPubKey.key"));
+        File pubKey = new File(keyFile + (property.toLowerCase().startsWith(Constant.WIN_SYSTEM_VERSION_LOWER_CASE)
+                ? Constant.WIN_RSA_PUBLIC_KEY_PATH : Constant.LINUX_RSA_PUBLIC_KEY_PATH));
         //保存私钥
         BufferedWriter writerPri = null;
         try {
-            writerPri = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(priKey, false), "UTF-8"));
+            writerPri = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(priKey, false), Constant.CODING_TYPE_UTF8));
             writerPri.write(privateKeyString);
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(BaseErrorMsg.IOEXCEPTION, e);
         } finally {
             try {
                 if (writerPri != null) {
                     writerPri.close();
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                log.error(BaseErrorMsg.IOEXCEPTION, e);
             }
         }
         //保存公钥
         BufferedWriter writerPub = null;
         try {
-            writerPub = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(pubKey, false), "UTF-8"));
+            writerPub = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(pubKey, false), Constant.CODING_TYPE_UTF8));
             writerPub.write(publicKeyString);
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(BaseErrorMsg.IOEXCEPTION, e);
         } finally {
             try {
                 if (writerPub != null) {
                     writerPub.close();
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                log.error(BaseErrorMsg.IOEXCEPTION, e);
             }
         }
     }
