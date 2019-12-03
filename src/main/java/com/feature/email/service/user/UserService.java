@@ -49,6 +49,11 @@ public class UserService {
         if (CommonBeanUtils.objectIsNotEmpty(userMsg)) {
             return ResponseEntity.errorInfo(UserEnum.$userIsExisted);
         }
+        //检查邮箱是否已被占用
+        User userEmailMsg = userMapper.queryByUserEmail(userVo.getUserEmail());
+        if (CommonBeanUtils.objectIsNotEmpty(userEmailMsg)) {
+            return ResponseEntity.errorInfo(UserEnum.$userEmailIsExits);
+        }
         //每个注册用户独有的盐值，通过盐值加密码进行校验
         String salt = Base64Utils.generateMixRandomCode();
         String pwd = null;
@@ -141,4 +146,45 @@ public class UserService {
         request.getSession().removeAttribute(Constant.SESSION_INFO_PARAMS);
         return ResponseEntity.SUCCEED;
     }
+
+
+    /**
+     * 更新用户信息
+     *
+     * @param userVo
+     * @return
+     */
+    @Transactional
+    public ResponseEntity updateUser(UserVo userVo) {
+        //如果昵称不为空，检查用户名是否已被占用
+        if (StringUtils.isNotBlank(userVo.getUserName())) {
+            User userMsg = userMapper.queryByUserName(userVo.getUserName());
+            if (userMsg != null) {
+                //昵称已被占用
+                if (userVo.getUserName().equals(userMsg.getUserName()) && userVo.getId() != userMsg.getId()) {
+                    return ResponseEntity.errorInfo(UserEnum.$userNameIsExits);
+                }
+            }
+        }
+        //如果邮箱不为空，检验邮箱是否已被占用
+        if (StringUtils.isNotBlank(userVo.getUserEmail())) {
+            User userMsg = userMapper.queryByUserEmail(userVo.getUserEmail());
+            if (userMsg != null) {
+                //邮箱已被占用
+                if (userVo.getUserEmail().equals(userMsg.getUserEmail()) && userVo.getId() != userMsg.getId()) {
+                    return ResponseEntity.errorInfo(UserEnum.$userEmailIsExits);
+                }
+            }
+        }
+        //更新用户信息
+        User user = new User();
+        BeanUtils.copyProperties(userVo, user);
+        Integer integer = userMapper.updateUser(user);
+        if (1 != integer) {
+            return ResponseEntity.errorInfo(UserEnum.$updateUserFail);
+        }
+        return ResponseEntity.SUCCEED;
+    }
+
+    
 }

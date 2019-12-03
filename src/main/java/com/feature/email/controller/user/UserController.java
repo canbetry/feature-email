@@ -44,4 +44,11 @@ public class UserController extends BaseController {
     public ResponseEntity userLogout(HttpServletRequest request) {
         return userService.userLogout(request);
     }
+
+    @ApiOperation("更新用户信息")
+    @PostMapping("/update")
+    public ResponseEntity updateUser(@RequestBody UserVo userVo) {
+        CommonBeanUtils.convertEmptyStringToNull(userVo);
+        return userService.updateUser(userVo);
+    }
 }

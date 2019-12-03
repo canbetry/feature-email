@@ -1,14 +1,15 @@
 package com.feature.email.entity.user;
 
+import com.feature.email.common.commonEntity.CommonEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 @ApiModel("用户信息表")
-public class User {
-    @ApiModelProperty("用户id")
-    private Long id;
+public class User extends CommonEntity {
     @ApiModelProperty("用户登录昵称，用户凭此登录")
     private String userName;
     @ApiModelProperty("用户登陆密码，用户凭此登录")
@@ -21,6 +22,8 @@ public class User {
     private String userType;
     @ApiModelProperty("客户真实姓名，用来接收邮件")
     private String custName;
-    @ApiModelProperty("逻辑删除标志:0.正常，1.删除")
-    private String isDeleted;
+    @ApiModelProperty("用户创建时间")
+    private Date createTime;
+    @ApiModelProperty("用户更新时间")
+    private String updateTime;
 }
