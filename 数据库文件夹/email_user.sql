@@ -76,7 +76,7 @@ CREATE TABLE `fe_total_email` (
   `recive_user_real_addr` varchar(200) DEFAULT '寄件人选择网络邮箱收件' COMMENT '收件人真实地址',
   `recive_user_real_email` varchar(200) NOT NULL COMMENT '收件人邮箱,邮件寄件时会发一封邮件通知收件人',
   `create_email_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '邮件创建时间',
-  `update_email_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '邮件更新时间',
+  `update_email_time` varchar(50) DEFAULT NULL COMMENT '邮件更新时间',
   `is_send` varchar(10) DEFAULT '未发送' COMMENT '邮件是否发送：未发送、已发送 ',
   `is_deleted` char(1) DEFAULT '0' COMMENT '逻辑删除标志，0：正常，1：删除',
   PRIMARY KEY (`id`)

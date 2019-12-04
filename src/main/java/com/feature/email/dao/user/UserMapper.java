@@ -6,13 +6,13 @@ import org.apache.ibatis.annotations.*;
 @Mapper
 public interface UserMapper {
 
-    final String resultMap = "id,user_name,user_password,salt,user_email," +
-            "user_type,cust_name,create_time,update_time,is_deleted";
-    final String resultParamMap = "(#{id},#{userName},#{userPassword},#{salt},#{userEmail}," +
-            "#{userType},#{custName},#{createTime},#{updateTime},#{isDeleted})";
-    final String updateResultMap = "id = #{id},user_name=#{userName},user_password=#{userPassword}," +
+    final String resultMap = " id,user_name,user_password,salt,user_email," +
+            "user_type,cust_name,create_time,update_time,is_deleted ";
+    final String resultParamMap = " (#{id},#{userName},#{userPassword},#{salt},#{userEmail}," +
+            "#{userType},#{custName},#{createTime},#{updateTime},#{isDeleted})  ";
+    final String updateResultMap = " id = #{id},user_name=#{userName},user_password=#{userPassword}," +
             "salt = #{salt},user_email=#{userEmail},user_type = #{userType},cust_name =#{custName}," +
-            "create_time=#{createTime},update_time=#{updateTime},is_deleted=#{isDeleted}";
+            "create_time=#{createTime},update_time=#{updateTime},is_deleted=#{isDeleted} ";
 
 
     @Insert("insert into fe_user (" + resultMap + ") values " + resultParamMap)
