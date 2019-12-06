@@ -2,6 +2,7 @@ package com.feature.email.controller.user;
 
 import com.feature.email.common.Response.ResponseEntity;
 import com.feature.email.controller.BaseController;
+import com.feature.email.entityVo.user.UserPwdVo;
 import com.feature.email.entityVo.user.UserVo;
 import com.feature.email.service.user.UserService;
 import com.feature.email.utils.CommonBeanUtils;
@@ -50,5 +51,12 @@ public class UserController extends BaseController {
     public ResponseEntity updateUser(@RequestBody UserVo userVo) {
         CommonBeanUtils.convertEmptyStringToNull(userVo);
         return userService.updateUser(userVo);
+    }
+
+    @ApiOperation("修改用户密码接口")
+    @PostMapping("/updatePwd")
+    public ResponseEntity updatePwd(@RequestBody UserPwdVo userPwdVo) {
+        CommonBeanUtils.convertEmptyStringToNull(userPwdVo);
+        return userService.updatePwd(userPwdVo);
     }
 }

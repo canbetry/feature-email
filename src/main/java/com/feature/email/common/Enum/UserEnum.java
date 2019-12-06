@@ -21,7 +21,13 @@ public enum UserEnum implements BaseBussinessStatus {
     $loginSuccess(1012, "登陆成功"),
     $userNameIsExits(1013, "昵称已被使用"),
     $userEmailIsExits(1014, "邮箱已被占用"),
-    $updateUserFail(1015, "更新用户失败");
+    $updateUserFail(1015, "更新用户失败"),
+    $updateFail(1016, "更新失败,系统异常"),
+    $saveFail(1017, "保存失败,系统异常"),
+    $getUserMsgFail(1018, "获取用户信息失败"),
+    $updatePwdFail(1019, "更新密码失败"),
+    $updatePwdFailSystem(1020, "更新密码失败，系统异常"),
+    $updatePwdSuccess(1021, "更新密码成功");
 
     private int code;
     private String message;

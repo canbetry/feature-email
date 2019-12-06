@@ -14,22 +14,13 @@ public interface UserMapper {
             "salt = #{salt},user_email=#{userEmail},user_type = #{userType},cust_name =#{custName}," +
             "create_time=#{createTime},update_time=#{updateTime},is_deleted=#{isDeleted} ";
 
+    final String updateUserMap = " user_name=#{userName},user_email=#{userEmail},update_time=#{updateTime} ";
+
 
     @Insert("insert into fe_user (" + resultMap + ") values " + resultParamMap)
     @Options(useGeneratedKeys = true, keyProperty = "id")
     Integer saveUser(User user);
 
-
-    //    @Results({
-//            @Result(id = true, column = "id", property = "id"),
-//            @Result(column = "user_name", property = "userName"),
-//            @Result(column = "user_password", property = "userPassword"),
-//            @Result(column = "salt", property = "salt"),
-//            @Result(column = "user_email", property = "userEmail"),
-//            @Result(column = "user_type", property = "userType"),
-//            @Result(column = "cust_name", property = "custName"),
-//            @Result(column = "is_deleted", property = "isDeleted")
-//    })
     @Select("select " + resultMap + " from fe_user where is_deleted = '0' and user_name = #{userName}")
     User queryByUserName(@Param("userName") String userName);
 
@@ -39,6 +30,9 @@ public interface UserMapper {
     @Select("select" + resultMap + "from fe_user where is_deleted = '0' and user_email = #{userEmail}")
     User queryByUserEmail(@Param("userEmail") String userEmail);
 
-    @Update("update fe_user set " + updateResultMap)
+    @Update("update fe_user set " + updateUserMap + " where id = #{id}")
     Integer updateUser(User user);
+
+    @Update("update fe_user set user_password = #{userPwd} where id = #{id}")
+    Integer updateUserPwd(@Param("userPwd") String userPwd, @Param("id") Long id);
 }

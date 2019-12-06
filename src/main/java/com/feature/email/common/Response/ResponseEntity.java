@@ -77,12 +77,12 @@ public class ResponseEntity<T> implements Serializable {
         return new ResponseEntity<T>(Constant.SUCCESS_CODE, message);
     }
 
-    public boolean isNotSuccess(ResponseEntity<T> responseEntity) {
-        return (Constant.SUCCESS_CODE.equals(responseEntity.getStatus()));
+    public boolean isNotSuccess() {
+        return this.status != 200;
     }
 
-    public boolean isSuccess(ResponseEntity<T> responseEntity) {
-        return (Constant.SUCCESS_CODE.equals(responseEntity.getStatus()));
+    public boolean isSuccess() {
+        return !isNotSuccess();
     }
 
     public static <T> ResponseEntity<T> errorInfo(BaseBussinessStatus baseBussinessStatus) {

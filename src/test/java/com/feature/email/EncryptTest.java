@@ -12,17 +12,13 @@ public class EncryptTest {
 
     @Test
     public static void main(String[] args) {
-        String pwd = null;
+        String email = "canbetry@163.com";
+        String salt = "d0Cn75BB";
+        String newEmail = null;
         try {
-            pwd = Base64Utils.encodeStr("strive0214");
+            newEmail = Base64Utils.decodeStr("YWRtaW4xMjM=6y0jFTwe=");
         } catch (UnsupportedEncodingException e) {
         }
-        System.out.println(pwd);
-        String email = null;
-        try {
-            email = Base64Utils.encodeStr("canbetry@163.com");
-        } catch (UnsupportedEncodingException e) {
-        }
-        System.out.println(email);
+        System.out.println(newEmail);
     }
 }

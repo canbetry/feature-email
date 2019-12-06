@@ -4,12 +4,23 @@ import com.feature.email.common.Exception.DIYException;
 import org.springframework.util.ObjectUtils;
 
 import java.lang.reflect.Field;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 //公共处理对象的工具类
 public class CommonBeanUtils {
+
+    //格式化字符串
+    public final static String PATTERN_STRING_YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";  //默认使用
+    public final static String PATTERN_STRING_YYYY_MM = "yyyy-MM-dd";
+    public final static String PATTERN_STRING_YYYY = "yyyy";
+    public final static String PATTERN_STRING_MM = "MM";
+    public final static String PATTERN_STRING_DD = "dd";
 
     //将对象中的空字符串转成null
     public final static void convertEmptyStringToNull(Object object) {
@@ -67,4 +78,51 @@ public class CommonBeanUtils {
     public static boolean objectIsNotEmpty(Object object) {
         return !objectIsEmpty(object);
     }
+
+
+    /**-----------------------------------日期相关处理-----------------------------------------**/
+    /**
+     * yyyy-MM-dd日期转字符串
+     *
+     * @param date
+     * @return
+     */
+    public static String localDateFormatterToString(LocalDate date) {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(PATTERN_STRING_YYYY_MM_DD_HH_MM_SS);
+        return date.format(dateTimeFormatter);
+    }
+
+    /**
+     * yyyy-MM-dd HH:mm:ss日期转字符串
+     *
+     * @param time
+     * @return
+     */
+    public static String localDataTimeFormatterToString(LocalDateTime time) {
+        return time.format(DateTimeFormatter.ofPattern(PATTERN_STRING_YYYY_MM_DD_HH_MM_SS));
+    }
+
+    /**
+     * 包含时分秒日期字符串转为日期格式
+     *
+     * @param dateStr
+     * @param pattern
+     * @return
+     */
+    public static Date dateStrFormatterToDateHMS(String dateStr) {
+        return DateUtils.localDateTime2Date(
+                LocalDateTime.parse(dateStr, DateTimeFormatter.ofPattern(PATTERN_STRING_YYYY_MM_DD_HH_MM_SS)));
+    }
+
+    /**
+     * 不包含时分秒日期转为日期格式
+     *
+     * @param dateStr
+     * @return
+     */
+    public static Date dateStrFormatterToDateYMD(String dateStr) {
+        return DateUtils.localDate2Date(LocalDate.parse(dateStr));
+    }
+
+    /**-----------------------------------日期相关处理-------------------------------------------**/
 }
