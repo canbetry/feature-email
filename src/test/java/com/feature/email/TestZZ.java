@@ -1,13 +1,13 @@
 package com.feature.email;
 
 import com.feature.email.utils.CommonBeanUtils;
+import com.feature.email.utils.EmailUtils;
 
 public class TestZZ {
 
     public static void main(String[] args) {
-
-        String dateTimeStr = "2018-07-28 14:11:15";
-        String dateStr = "2018-07-28";
-        System.out.println(CommonBeanUtils.dateStrFormatterToDateHMS(dateTimeStr));
+        String verifyCode = CommonBeanUtils.generateVerifyCodeDefaultLength();
+        EmailUtils.sendEmail("canbetry@163.com", verifyCode, "邮件主题");
+        System.out.println("2112");
     }
 }
