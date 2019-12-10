@@ -17,6 +17,10 @@ public class ResponseEntity<T> implements Serializable {
     private T content;
     private String message;
 
+    public ResponseEntity(int status) {
+        this.status = status;
+    }
+
     public ResponseEntity(int status, String message) {
         this.status = status;
         this.message = message;
@@ -47,6 +51,10 @@ public class ResponseEntity<T> implements Serializable {
 
     public static ResponseEntity response(int i, String message) {
         return new ResponseEntity(i, message);
+    }
+
+    public static ResponseEntity responseBySucceed() {
+        return new ResponseEntity(Constant.SUCCESS_CODE);
     }
 
     public static ResponseEntity responseBySucceed(String message) {

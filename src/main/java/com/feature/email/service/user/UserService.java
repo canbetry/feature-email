@@ -11,6 +11,7 @@ import com.feature.email.entityVo.user.UserPwdVo;
 import com.feature.email.entityVo.user.UserVo;
 import com.feature.email.utils.Base64Utils;
 import com.feature.email.utils.CommonBeanUtils;
+import com.feature.email.utils.EmailUtils;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
@@ -204,6 +205,50 @@ public class UserService extends BaseController {
         return ResponseEntity.SUCCEED;
     }
 
+
+    /**
+     * 发送邮件验证码到用户的邮箱
+     *
+     * @param request
+     * @return
+     */
+    public ResponseEntity sendEmailForUpdatePWD(HttpServletRequest request) {
+        UserVo userInfo = getUserInfo(request);
+        if (null == userInfo) {
+            return ResponseEntity.errorInfo(UserEnum.$getUserMsgFail);
+        }
+        //随机生成验证码
+        String verifyCode = CommonBeanUtils.generateVerifyCodeDefaultLength();
+        EmailUtils.sendEmail(userInfo.getUserEmail(), verifyCode, Constant.EMAIL_VERIFY_CODE_TITLE_DEFAULT);
+        //验证码放入session
+        request.getSession().setAttribute(Constant.SESSION_INFO_PARAMS_CODE_EMAIL, verifyCode);
+        return ResponseEntity.responseBySucceed();
+    }
+
+
+    /**
+     * 校验验证码
+     *
+     * @param verifyCode 加密的验证码
+     * @param request
+     * @return
+     */
+    public ResponseEntity checkVerifyCode(String verifyCode, HttpServletRequest request) {
+        try {
+            Base64Utils.decodeStr(verifyCode);
+        } catch (UnsupportedEncodingException e) {
+            log.error(BaseErrorMsg.decryptFail, e);
+        }
+
+        return ResponseEntity.responseBySucceed();
+    }
+
+    /**
+     * 更新用户密码
+     *
+     * @param userPwdVo
+     * @return
+     */
     @Transactional
     public ResponseEntity updatePwd(UserPwdVo userPwdVo) {
         if (null == userPwdVo.getId() || StringUtils.isBlank(userPwdVo.getOldPwd()) ||

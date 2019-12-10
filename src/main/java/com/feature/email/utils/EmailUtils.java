@@ -59,7 +59,6 @@ public class EmailUtils {
             email.send();
             log.info("邮件发送成功!");
         } catch (EmailException e) {
-            // TODO Auto-generated catch block
             log.error("邮件发送失败!", e);
             throw new DIYException("邮件发送失败", e);
         }

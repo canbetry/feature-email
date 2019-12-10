@@ -36,6 +36,8 @@ public class Constant {
 
     //session参数
     public final static String SESSION_INFO_PARAMS = "user_session_info";
+    public final static String SESSION_INFO_PARAMS_CODE_EMAIL = "EMAIL_VERIFY_CODE";
+
 
     //系统固有属性
     public final static String SYSTEM_PROPERTY = "os.name";
@@ -54,4 +56,7 @@ public class Constant {
     //系统编码
     public final static String CODING_TYPE_UTF8 = "UTF-8";
 
+
+    //邮件验证码默认主题
+    public final static String EMAIL_VERIFY_CODE_TITLE_DEFAULT = "邮件验证码";
 }

@@ -13,7 +13,9 @@ public enum BaseErrorMsg {
     encryptEmailFail("加密邮箱失败"),
     updateFail("更新失败,系统异常"),
     saveFail("保存失败,系统异常"),
-    oldPwdDifferent("原始密码不一致，修改密码失败");
+    oldPwdDifferent("原始密码不一致，修改密码失败"),
+    decryptFail("解密失败"),
+    encryptFail("加密失败");
     private String msg;
 
     BaseErrorMsg(String msg) {
