@@ -12,8 +12,8 @@ public class EmailUtils {
     private static final String MAIL_HOST_VALUE_163 = "smtp.163.com"; //发送邮件的服务器地址
     private static final String MAIL_HOST_VALUE_qq = "smtp.qq.com"; //发送邮件的服务器地址
 
-    private static final String DEFAULT_EMAIL_SEND = "canbetry@163.com";
-    private static final String AUTHORIZATION_CODE = "5tgbnhy6";
+    private static final String DEFAULT_EMAIL_SEND = "feature_email@163.com";
+    private static final String AUTHORIZATION_CODE = "5tgb6yhn";
 
     /**
      * 发送邮件验证码
