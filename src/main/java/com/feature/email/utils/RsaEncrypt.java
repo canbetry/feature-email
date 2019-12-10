@@ -69,7 +69,7 @@ public class RsaEncrypt {
      */
     private final static String readFile(String file) throws IOException {
         InputStreamReader isr = new InputStreamReader(new FileInputStream(new File(file)));
-        String keyStr = null;
+        String keyStr = "";
         try {
             int ch = 0;
             while ((ch = isr.read()) != -1) {
@@ -89,9 +89,9 @@ public class RsaEncrypt {
      * @return
      * @throws Exception
      */
-    public final static String encrypt(String str, String privateKey) throws Exception {
+    public final static String encrypt(String str, String publicKey) throws Exception {
         //base64编码的公钥
-        byte[] decoded = Base64.decodeBase64(privateKey);
+        byte[] decoded = Base64.decodeBase64(publicKey);
         RSAPublicKey pubKey = (RSAPublicKey) KeyFactory.getInstance(Constant.STRING_RSA).generatePublic(new X509EncodedKeySpec(decoded));
         //RSA加密
         Cipher cipher = Cipher.getInstance(Constant.STRING_RSA);
@@ -109,11 +109,11 @@ public class RsaEncrypt {
      * @return
      * @throws Exception
      */
-    public final static String decrypt(String str, String publicKey) throws Exception {
+    public final static String decrypt(String str, String privateKey) throws Exception {
         //64位解码加密后的字符串
         byte[] inputByte = Base64.decodeBase64(str.getBytes(Constant.CODING_TYPE_UTF8));
         //base64编码的私钥
-        byte[] decoded = Base64.decodeBase64(publicKey);
+        byte[] decoded = Base64.decodeBase64(privateKey);
         RSAPrivateKey priKey = (RSAPrivateKey) KeyFactory.getInstance(Constant.STRING_RSA).generatePrivate(new PKCS8EncodedKeySpec(decoded));
         //RSA解密
         Cipher cipher = Cipher.getInstance(Constant.STRING_RSA);

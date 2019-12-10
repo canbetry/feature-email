@@ -17,15 +17,15 @@ public class RsaUtils {
      * @return
      */
     public final static String encode(String text) {
-        String privatekeyString = null;
+        String publickeyString = null;
         try {
-            privatekeyString = RsaEncrypt.getPrikeyString();
+            publickeyString = RsaEncrypt.getPubKeyString();
         } catch (IOException e) {
             throw new DIYException("获取本地私钥失败", e);
         }
         String encStr = null;
         try {
-            encStr = RsaEncrypt.encrypt(text, privatekeyString);
+            encStr = RsaEncrypt.encrypt(text, publickeyString);
         } catch (Exception e) {
             throw new DIYException("加密失败", e);
         }
@@ -39,15 +39,15 @@ public class RsaUtils {
      * @return
      */
     public final static String decode(String text) {
-        String publicString = null;
+        String privateString = null;
         try {
-            publicString = RsaEncrypt.getPubKeyString();
+            privateString = RsaEncrypt.getPrikeyString();
         } catch (IOException e) {
             throw new DIYException("获取本地公钥失败", e);
         }
         String descStr = null;
         try {
-            descStr = RsaEncrypt.decrypt(text, publicString);
+            descStr = RsaEncrypt.decrypt(text, privateString);
         } catch (Exception e) {
             throw new DIYException("解密失败", e);
         }

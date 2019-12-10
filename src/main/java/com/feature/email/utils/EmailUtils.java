@@ -6,14 +6,18 @@ import lombok.extern.log4j.Log4j2;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
 
+import java.io.UnsupportedEncodingException;
+
 @Log4j2
 public class EmailUtils {
     //配置信息
     private static final String MAIL_HOST_VALUE_163 = "smtp.163.com"; //发送邮件的服务器地址
     private static final String MAIL_HOST_VALUE_qq = "smtp.qq.com"; //发送邮件的服务器地址
 
-    private static final String DEFAULT_EMAIL_SEND = "feature_email@163.com";
-    private static final String AUTHORIZATION_CODE = "5tgb6yhn";
+
+    //邮箱及授权码，经Base64及Rsa加密计算
+    private static final String DEFAULT_EMAIL_SEND = "QDVsWr62jbNjm+VfLDN8K64nxUHlyO8kMIV2kYSQUveTf9Ste+Q6qRbUg9lB8RP6wM/ewJIC5ASKvI3arf+vqNHdqHypq8G6aWhHoKJEXoUbN1P0O11GkXZEg1/Ed4RPxRmyYEtBkHWxCUixWhBi6m2oFrLb91nB5PTibgqgMBA=";
+    private static final String AUTHORIZATION_CODE = "I2zkP6MIyQRTk8PEKBg0MCrWqz+0vXmJ1yVD2eAHFnGgGUjrtG4rVDKFOQSYbM+MhYHTQfxr6ug4SSB/fFfSZc16NRV488EPc2y3mGlkUlMiCyG5BEc1CmE64kG8uiUVRU/8aNU/3nuzL5GgWTSIXXr9pLq/EuCDlUu6UnyShHg=";
 
     /**
      * 发送邮件验证码
@@ -49,12 +53,20 @@ public class EmailUtils {
             // 收件人的邮箱
             email.addTo(emailAddress);
             // 发送人的邮箱
-            email.setFrom(DEFAULT_EMAIL_SEND);
+            String sendEmail = "";
+            String sendPwd = "";
+            try {
+                sendEmail = Base64Utils.decodeStr(RsaUtils.decode(DEFAULT_EMAIL_SEND));
+                sendPwd = Base64Utils.decodeStr(RsaUtils.decode(AUTHORIZATION_CODE));
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            email.setFrom(sendEmail);
             // 如果需要认证信息的话，设置认证：用户名-密码。分别为发件人在邮件服务器上的注册名称和得到的授权码
-            email.setAuthentication(DEFAULT_EMAIL_SEND, AUTHORIZATION_CODE);
+            email.setAuthentication(sendEmail, sendPwd);
             email.setSubject(emailTitle);
             // 要发送的信息，由于使用了HtmlEmail，可以在邮件内容中使用HTML标签
-            email.setMsg("欢迎注册，您的验证码为：" + verifyCode + "\n" + DEFAULT_EMAIL_SEND);
+            email.setMsg("欢迎注册，您的验证码为：" + verifyCode + "\n" + sendEmail);
             // 发送
             email.send();
             log.info("邮件发送成功!");
