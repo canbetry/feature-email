@@ -11,6 +11,8 @@ import com.feature.email.service.user.UserService;
 import com.feature.email.utils.Base64Utils;
 import com.feature.email.utils.CommonBeanUtils;
 import lombok.extern.log4j.Log4j2;
+import org.jasypt.util.text.BasicTextEncryptor;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -51,7 +53,7 @@ class FeatureEmailApplicationTests {
         User user = new User();
         try {
             user.setCustName(Base64Utils.encodeStr("luoyunlong"));
-            user.setUserEmail(Base64Utils.encodeStr("canbetry@163.com"));
+            user.setUserEmail(Base64Utils.encodeStr(""));
             user.setUserPassword(Base64Utils.encodeStr("admin123!@#"));
         } catch (UnsupportedEncodingException e) {
             log.error("编码失败", e);
@@ -87,7 +89,7 @@ class FeatureEmailApplicationTests {
             throw new DIYException("注册失败", e);
         }
         try {
-            userVo.setUserEmail(Base64Utils.encodeStr("canbetry@163.com"));
+            userVo.setUserEmail(Base64Utils.encodeStr(""));
         } catch (UnsupportedEncodingException e) {
             log.error("加密邮箱失败", e);
         }
@@ -106,7 +108,7 @@ class FeatureEmailApplicationTests {
         userVo.setUserName("admin");
         userVo.setId(5L);
         try {
-            userVo.setUserEmail(Base64Utils.encodeStr("canbetry@163.com"));
+            userVo.setUserEmail(Base64Utils.encodeStr(""));
         } catch (UnsupportedEncodingException e) {
             log.error("加密失败");
         }
@@ -158,5 +160,25 @@ class FeatureEmailApplicationTests {
     public void sessionTest() {
         redisUtils.set(redisPre + "test", "admin");
         System.out.println(redisUtils.get(redisPre + "test"));
+    }
+
+    @Value("${spring.datasource.username}")
+    private String mailPassword;
+    @Test
+    public void getPass() {
+        BasicTextEncryptor textEncryptor = new BasicTextEncryptor();
+//        textEncryptor.setPassword("");
+//        String name = textEncryptor.encrypt("");
+//        String password = textEncryptor.encrypt("");
+//解密内容
+//        String url = textEncryptor.decrypt(mailUName);
+//        String name = textEncryptor.decrypt(mailUName);
+//        String password = textEncryptor.decrypt(mailPassword);
+
+        System.out.println(mailPassword);
+//        System.out.println(name + "----------------");
+//        System.out.println(password + "----------------");
+//        Assert.assertTrue(name.length() > 0);
+//        Assert.assertTrue(password.length() > 0);
     }
 }
