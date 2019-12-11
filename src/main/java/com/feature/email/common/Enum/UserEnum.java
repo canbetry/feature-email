@@ -28,7 +28,8 @@ public enum UserEnum implements BaseBussinessStatus {
     $updatePwdFail(1019, "更新密码失败"),
     $updatePwdFailSystem(1020, "更新密码失败，系统异常"),
     $updatePwdSuccess(1021, "更新密码成功"),
-    $systemException(1022, "系统异常");
+    $systemException(1022, "系统异常"),
+    $argsLengthError(1023, "参数长度不对，attachments请传2两个参数[文件名][文件路径]");
 
     private int code;
     private String message;

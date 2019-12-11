@@ -16,7 +16,8 @@ public enum BaseErrorMsg {
     oldPwdDifferent("原始密码不一致，修改密码失败"),
     decryptFail("解密失败"),
     encryptFail("加密失败"),
-    systemException("系统异常");
+    systemException("系统异常"),
+    argsLengthError("参数长度不对，attachments请传2两个参数[文件名][文件路径]");
     private String msg;
 
     BaseErrorMsg(String msg) {

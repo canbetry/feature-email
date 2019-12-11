@@ -7,6 +7,7 @@ import com.feature.email.dao.user.UserMapper;
 import com.feature.email.entity.user.User;
 import com.feature.email.entityVo.user.UserPwdVo;
 import com.feature.email.entityVo.user.UserVo;
+import com.feature.email.service.mail.MailService;
 import com.feature.email.service.user.UserService;
 import com.feature.email.utils.Base64Utils;
 import com.feature.email.utils.CommonBeanUtils;
@@ -18,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.mail.MessagingException;
 import java.io.UnsupportedEncodingException;
 
 @SpringBootTest
@@ -156,9 +158,16 @@ class FeatureEmailApplicationTests {
     @Value("${spring-redis-session-name-pre}")
     private String redisPre;
 
+    @Autowired
+    private MailService mailService;
+
     @Test
     public void sessionTest() {
-        redisUtils.set(redisPre + "test", "admin");
+        try {
+            mailService.sendMail("","12","112","一个文件","E:\\feature-email\\src\\main\\java\\com\\feature\\email\\service\\mail\\MailService.java");
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
         System.out.println(redisUtils.get(redisPre + "test"));
     }
 
