@@ -2,6 +2,7 @@ package com.feature.email;
 
 import com.feature.email.common.Exception.DIYException;
 import com.feature.email.common.Response.ResponseEntity;
+import com.feature.email.conf.RedisUtils;
 import com.feature.email.dao.user.UserMapper;
 import com.feature.email.entity.user.User;
 import com.feature.email.entityVo.user.UserPwdVo;
@@ -12,6 +13,7 @@ import com.feature.email.utils.CommonBeanUtils;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.UnsupportedEncodingException;
@@ -144,5 +146,17 @@ class FeatureEmailApplicationTests {
             throw new DIYException("==========失败============");
         }
         System.out.println("++++++++++成功+++++++++++++");
+    }
+
+    @Autowired
+    private RedisUtils redisUtils;
+
+    @Value("${spring-redis-session-name-pre}")
+    private String redisPre;
+
+    @Test
+    public void sessionTest() {
+        redisUtils.set(redisPre + "test", "admin");
+        System.out.println(redisUtils.get(redisPre + "test"));
     }
 }

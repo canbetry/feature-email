@@ -27,7 +27,8 @@ public enum UserEnum implements BaseBussinessStatus {
     $getUserMsgFail(1018, "获取用户信息失败"),
     $updatePwdFail(1019, "更新密码失败"),
     $updatePwdFailSystem(1020, "更新密码失败，系统异常"),
-    $updatePwdSuccess(1021, "更新密码成功");
+    $updatePwdSuccess(1021, "更新密码成功"),
+    $systemException(1022, "系统异常");
 
     private int code;
     private String message;

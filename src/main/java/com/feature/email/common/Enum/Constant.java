@@ -37,6 +37,11 @@ public class Constant {
     //session参数
     public final static String SESSION_INFO_PARAMS = "user_session_info";
     public final static String SESSION_INFO_PARAMS_CODE_EMAIL = "EMAIL_VERIFY_CODE";
+    public final static String REQUEST_HEADER_CONTENT_TYPE = "Content-Type";
+    public final static String REQUEST_HEADER_CONTENT_DISPOSITION = "Content-Disposition";
+    public final static String CONTENT_TYPE_OCTET_STREAM = "application/octet-stream";
+    public final static String CONTENT_TYPE_JSON = "application/json";
+    public final static String DISPOSITION_ATTACHMENT = "attachment;filename=";
 
 
     //系统固有属性
@@ -59,4 +64,7 @@ public class Constant {
 
     //邮件验证码默认主题
     public final static String EMAIL_VERIFY_CODE_TITLE_DEFAULT = "邮件验证码";
+
+    public final static String IMAGE_TYPE_PNG = "png";
+    public final static String IMAGE_TYPE_JPG = "jpg";
 }
