@@ -5,4 +5,5 @@ package com.feature.email.common.Enum;
  */
 public class RedisConstant {
 
+    final static String REDIS_PRE_DEV = "dev";
 }
