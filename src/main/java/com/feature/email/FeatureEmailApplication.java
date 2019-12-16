@@ -8,7 +8,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 //@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
-@SpringBootApplication
+@SpringBootApplication(exclude = {
+        org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class
+})
 @MapperScan(basePackages = "com.feature.email.dao")
 @EnableScheduling   //开启定时任务
 @EnableCaching  //开启缓存

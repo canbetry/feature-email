@@ -24,6 +24,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         loginUrl = new ArrayList<>();
         loginUrl.add("/user/register");
         loginUrl.add("/user/login");
+        loginUrl.add("/test");
     }
 
 
