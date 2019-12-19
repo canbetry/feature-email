@@ -8,18 +8,19 @@ import java.util.List;
 @Mapper
 public interface TotalEmailMapper {
 
-    final String resultMap = " id,user_name,user_password,salt,user_email,user_type,cust_name," +
-            "create_time,update_time,is_deleted ";
+    final String resultMap = " id,user_id,email_title,email_content,send_user_real_name,recive_user_real_name," +
+            "recive_user_real_addr,recive_user_real_email,is_visible,create_email_time,update_email_time," +
+            "is_send,is_deleted ";
 
-    final String resultParamMap = " #{id},#{user_id},#{#{email_content},#{send_user_real_name}," +
-            "#{send_user_real_email},#{recive_user_real_name},#{recive_user_real_addr}," +
-            "#{recive_user_real_email},#{create_email_time},#{update_email_time},#{is_send},#{is_deleted} ";
+    final String resultParamMap = " #{id},#{userId},#{emailTitle},#{#{emailContent}," +
+            "#{sendUserRealName},#{reciveUseRealName},#{reciveUserRealAddr}," +
+            "#{reciveUserRealEmail},#{isVisible},#{createEmailTime},#{updateEmailTime},#{isSend},#{isDeleted} ";
 
-    final String updateResultMap = " id=#{id},user_id=#{user_id},email_title=#{email_title}," +
-            "email_content=#{email_content},send_user_real_name=#{send_user_real_name}," +
-            "recive_user_real_name=#{recive_user_real_name},recive_user_real_addr=#{recive_user_real_addr}," +
-            "recive_user_real_email=#{recive_user_real_email},create_email_time=#{create_email_time}," +
-            "update_email_time=#{update_email_time},is_send=#{is_send},is_deleted=#{is_deleted} ";
+    final String updateResultMap = " id=#{id},user_id=#{userId},email_title=#{emailTitle}," +
+            "email_content=#{emailContent},send_user_real_name=#{sendUserRealName}," +
+            "recive_user_real_name=#{reciveUseRealName},recive_user_real_addr=#{reciveUserRealAddr}," +
+            "recive_user_real_email=#{reciveUserRealEmail},is_visible=#{isVisible},create_email_time=#{createEmailTime}," +
+            "update_email_time=#{updateEmailTime},is_send=#{isSend},is_deleted=#{isDeleted} ";
 
     @Insert("insert into fe_total_email (" + resultMap + ") VALUES " + resultParamMap)
     @Options(useGeneratedKeys = true, keyProperty = "id")

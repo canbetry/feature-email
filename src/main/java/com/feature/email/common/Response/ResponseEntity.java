@@ -61,6 +61,10 @@ public class ResponseEntity<T> implements Serializable {
         return new ResponseEntity(Constant.SUCCESS_CODE, message);
     }
 
+    public static <T> ResponseEntity<T> responseBySucceed(T content) {
+        return new ResponseEntity(Constant.SUCCESS_CODE, content);
+    }
+
     public static ResponseEntity responseByFailed(String message) {
         return new ResponseEntity(Constant.ERROR_CODE, message);
     }

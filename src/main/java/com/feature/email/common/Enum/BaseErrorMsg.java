@@ -17,7 +17,9 @@ public enum BaseErrorMsg {
     decryptFail("解密失败"),
     encryptFail("加密失败"),
     systemException("系统异常"),
-    argsLengthError("参数长度不对，attachments请传2两个参数[文件名][文件路径]");
+    argsLengthError("参数长度不对，attachments请传2两个参数[文件名][文件路径]"),
+    //----------------------email相关--------------------------//
+    saveEmailFail("保存邮件失败");
     private String msg;
 
     BaseErrorMsg(String msg) {

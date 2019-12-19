@@ -14,7 +14,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 @MapperScan(basePackages = "com.feature.email.dao")
 @EnableScheduling   //开启定时任务
 @EnableCaching  //开启缓存
-@EnableRedisHttpSession
+@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 900)
 public class FeatureEmailApplication {
 
     public static void main(String[] args) {

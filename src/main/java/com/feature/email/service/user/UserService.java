@@ -105,6 +105,10 @@ public class UserService extends BaseController {
      * @return
      */
     public ResponseEntity<UserVo> userLogin(UserVo userVo, HttpServletRequest request) {
+        //如果已经登录就不必往下走
+        if (null != request.getSession().getAttribute(Constant.SESSION_INFO_PARAMS)) {
+            return ResponseEntity.responseBySucceed((UserVo) request.getSession().getAttribute(Constant.SESSION_INFO_PARAMS));
+        }
         //检查用户登录名合用户密码(加密)是否为空
         if (StringUtils.isBlank(userVo.getUserName()) || StringUtils.isBlank(userVo.getUserPassword())) {
             return ResponseEntity.errorInfo(UserEnum.$userInfoIsNull);
@@ -131,7 +135,7 @@ public class UserService extends BaseController {
         BeanUtils.copyProperties(user, userVo);
         //登陆成功将用户信息放于session中
         request.getSession().setAttribute(Constant.SESSION_INFO_PARAMS, userVo);
-        return ResponseEntity.responseBySucceed(UserEnum.$loginSuccess.getMessage());
+        return ResponseEntity.responseBySucceed(userVo);
     }
 
 
