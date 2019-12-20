@@ -44,6 +44,20 @@ public class EmailService {
     }
 
 
+    /**
+     * 删除邮件
+     *
+     * @param emailId
+     * @return
+     */
+    public ResponseEntity removeEmail(Long emailId) {
+        Integer integer = totalEmailMapper.removeTotalEmail(emailId);
+        if (1 != integer) {
+
+        }
+        return ResponseEntity.SUCCEED;
+    }
+
     private boolean emailFieldCheck(TotalEmail totalEmail) {
         if (null != totalEmail.getUserId() && StringUtils.isNotBlank(totalEmail.getEmailTitle()) &&
                 StringUtils.isNotBlank(totalEmail.getEmailContent()) && StringUtils.isNotBlank(totalEmail.getSendUserRealName()) &&

@@ -35,4 +35,6 @@ public interface TotalEmailMapper {
     @Update("update fe_total_email set " + updateResultMap)
     Integer updateTotalEmail(TotalEmail totalEmail);
 
+    @Update("update fe_total_email set is_deleted = '1' where id = #{id}")
+    Integer removeTotalEmail(Long id);
 }
