@@ -7,6 +7,13 @@ import lombok.Data;
 
 import java.util.Date;
 
+
+/**
+ * @description: User <br>
+ * @date: 2020/1/7 11:08 <br>
+ * @author: luoyl <br>
+ * @version: 1.0 <br>
+ */
 @Data
 @ApiModel("用户信息表")
 public class User extends CommonEntity {

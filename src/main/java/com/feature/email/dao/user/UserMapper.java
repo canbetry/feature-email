@@ -3,6 +3,13 @@ package com.feature.email.dao.user;
 import com.feature.email.entity.user.User;
 import org.apache.ibatis.annotations.*;
 
+
+/**
+ * @description: UserMapper <br>
+ * @date: 2020/1/7 11:09 <br>
+ * @author: luoyl <br>
+ * @version: 1.0 <br>
+ */
 @Mapper
 public interface UserMapper {
 

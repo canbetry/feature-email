@@ -6,6 +6,13 @@ import lombok.Data;
 
 import java.util.Date;
 
+
+/**
+ * @description: SendEmailVo <br>
+ * @date: 2020/1/7 10:59 <br>
+ * @author: luoyl <br>
+ * @version: 1.0 <br>
+ */
 @ApiModel("已发送邮件对象实体")
 @Data
 public class SendEmailVo {

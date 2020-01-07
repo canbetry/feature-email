@@ -18,7 +18,10 @@ import java.util.Random;
 
 
 /**
- * 二维码工具类
+ * @description: QRCodeUtil <br>
+ * @date: 2020/1/7 10:51 <br>
+ * @author: luoyl <br>
+ * @version: 1.0 <br>
  */
 @SuppressWarnings("all")
 public class QRCodeUtil {

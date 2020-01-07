@@ -9,13 +9,21 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-//公共处理对象的工具类
+/**
+ * @description: CommonBeanUtils <br>
+ * @date: 2020/1/7 10:47 <br>
+ * @author: luoyl <br>
+ * @version: 1.0 <br>
+ */
 public class CommonBeanUtils {
 
     /**
      * ------------------------------------格式化字符串--------------------------
      **/
-    public final static String PATTERN_STRING_YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";  //默认使用
+    /**
+     * 默认使用
+     */
+    public final static String PATTERN_STRING_YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
     public final static String PATTERN_STRING_YYYY_MM = "yyyy-MM-dd";
     public final static String PATTERN_STRING_YYYY = "yyyy";
     public final static String PATTERN_STRING_MM = "MM";
@@ -27,7 +35,11 @@ public class CommonBeanUtils {
     public static final String VERIFY_CODES = "0123456789ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     public static final int VERIFY_CODES_DEFAULT_LENGTH = 8;
 
-    //将对象中的空字符串转成null
+    /**
+     * 将对象中的空字符串转成null
+     *
+     * @param object
+     */
     public final static void convertEmptyStringToNull(Object object) {
         try {
             Field[] fields = getAllFields(object.getClass());
@@ -57,7 +69,8 @@ public class CommonBeanUtils {
      */
     private static Field[] getAllFields(Class<?> clazz) {
         List<Field> fieldList = new ArrayList<>(Arrays.asList(clazz.getDeclaredFields()));
-        if (!clazz.getName().toLowerCase().equals("java.lang.object")) {
+        String objectStr = "java.lang.object";
+        if (!objectStr.equals(clazz.getName().toLowerCase())) {
             fieldList.addAll(Arrays.asList(getAllFields(clazz.getSuperclass())));
         }
         Field[] resFields = new Field[fieldList.size()];

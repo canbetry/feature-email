@@ -1,7 +1,7 @@
 package com.feature.email;
 
 import com.feature.email.common.Exception.DIYException;
-import com.feature.email.common.Response.ResponseEntity;
+import com.feature.email.common.response.ResponseEntity;
 import com.feature.email.conf.RedisUtils;
 import com.feature.email.dao.user.UserMapper;
 import com.feature.email.entity.user.User;
@@ -13,7 +13,6 @@ import com.feature.email.utils.Base64Utils;
 import com.feature.email.utils.CommonBeanUtils;
 import lombok.extern.log4j.Log4j2;
 import org.jasypt.util.text.BasicTextEncryptor;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

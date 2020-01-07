@@ -3,7 +3,7 @@ package com.feature.email.service.user;
 import com.feature.email.common.Enum.BaseErrorMsg;
 import com.feature.email.common.Enum.Constant;
 import com.feature.email.common.Enum.UserEnum;
-import com.feature.email.common.Response.ResponseEntity;
+import com.feature.email.common.response.ResponseEntity;
 import com.feature.email.controller.BaseController;
 import com.feature.email.dao.user.UserMapper;
 import com.feature.email.entity.user.User;
@@ -16,7 +16,6 @@ import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,7 +25,12 @@ import java.time.LocalDateTime;
 
 
 /**
- * Spring5开始，spring默认使用CGLIB动态代理，因此不需要通过实现接口进行依赖注入和查找
+ * SpringBoot2.X开始默认使用CGLIB动态代理，Spring5依然使用JDK代理
+ *
+ * @description: UserService <br>
+ * @date: 2020/1/7 10:56 <br>
+ * @author: luoyl <br>
+ * @version: 1.0 <br>
  */
 @Service("userService")
 @Log4j2
@@ -165,7 +169,7 @@ public class UserService extends BaseController {
             User userMsg = userMapper.queryByUserName(userVo.getUserName());
             if (userMsg != null) {
                 //昵称已被占用
-                if (userVo.getUserName().equals(userMsg.getUserName()) && userVo.getId() != userMsg.getId()) {
+                if (userVo.getUserName().equals(userMsg.getUserName()) && !userVo.getId().equals(userMsg.getId())) {
                     return ResponseEntity.errorInfo(UserEnum.$userNameIsExits);
                 }
             }
@@ -194,7 +198,7 @@ public class UserService extends BaseController {
             User userMsg = userMapper.queryByUserEmail(email);
             if (userMsg != null) {
                 //邮箱已被占用
-                if (userVo.getUserEmail().equals(userMsg.getUserEmail()) && userVo.getId() != userMsg.getId()) {
+                if (userVo.getUserEmail().equals(userMsg.getUserEmail()) && !userVo.getId().equals(userMsg.getId())) {
                     return ResponseEntity.errorInfo(UserEnum.$userEmailIsExits);
                 }
             }

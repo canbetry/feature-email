@@ -5,6 +5,11 @@ import org.springframework.stereotype.Component;
 
 /**
  * 定时任务
+ *
+ * @description: TaskConfig <br>
+ * @date: 2020/1/7 11:08 <br>
+ * @author: luoyl <br>
+ * @version: 1.0 <br>
  */
 @Component
 public class TaskConfig {

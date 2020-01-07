@@ -2,6 +2,11 @@ package com.feature.email.common.Enum;
 
 /**
  * 基础错误信息
+ *
+ * @description: BaseErrorMsg <br>
+ * @date: 2020/1/7 11:13 <br>
+ * @author: luoyl <br>
+ * @version: 1.0 <br>
  */
 public enum BaseErrorMsg {
     encryptPwdFail("加密密码失败"),

@@ -9,6 +9,13 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.Date;
 
+
+/**
+ * @description: TotalEmail <br>
+ * @date: 2020/1/7 11:08 <br>
+ * @author: luoyl <br>
+ * @version: 1.0 <br>
+ */
 @Data
 @ApiModel("邮件总表")
 public class TotalEmail extends CommonEntity implements Serializable {

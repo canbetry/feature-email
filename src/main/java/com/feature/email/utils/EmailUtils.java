@@ -8,14 +8,24 @@ import org.apache.commons.mail.HtmlEmail;
 
 import java.io.UnsupportedEncodingException;
 
+/**
+ * @description: EmailUtils <br>
+ * @date: 2020/1/7 10:46 <br>
+ * @author: luoyl <br>
+ * @version: 1.0 <br>
+ */
 @Log4j2
 public class EmailUtils {
-    //配置信息
-    private static final String MAIL_HOST_VALUE_163 = "smtp.163.com"; //发送邮件的服务器地址
-    private static final String MAIL_HOST_VALUE_qq = "smtp.qq.com"; //发送邮件的服务器地址
+    /**
+     * 发送邮件的服务器地址
+     */
+    private static final String MAIL_HOST_VALUE_163 = "smtp.163.com";
+    private static final String MAIL_HOST_VALUE_qq = "smtp.qq.com";
 
 
-    //邮箱及授权码，经Base64及Rsa加密计算
+    /**
+     * 邮箱及授权码，经Base64及Rsa加密计算
+     */
     private static final String DEFAULT_EMAIL_SEND = "QDVsWr62jbNjm+VfLDN8K64nxUHlyO8kMIV2kYSQUveTf9Ste+Q6qRbUg9lB8RP6wM/ewJIC5ASKvI3arf+vqNHdqHypq8G6aWhHoKJEXoUbN1P0O11GkXZEg1/Ed4RPxRmyYEtBkHWxCUixWhBi6m2oFrLb91nB5PTibgqgMBA=";
     private static final String AUTHORIZATION_CODE = "I2zkP6MIyQRTk8PEKBg0MCrWqz+0vXmJ1yVD2eAHFnGgGUjrtG4rVDKFOQSYbM+MhYHTQfxr6ug4SSB/fFfSZc16NRV488EPc2y3mGlkUlMiCyG5BEc1CmE64kG8uiUVRU/8aNU/3nuzL5GgWTSIXXr9pLq/EuCDlUu6UnyShHg=";
 

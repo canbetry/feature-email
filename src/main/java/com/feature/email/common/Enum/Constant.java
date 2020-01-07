@@ -2,10 +2,17 @@ package com.feature.email.common.Enum;
 
 
 /**
- * 常量池
+ * 通用常量池
+ *
+ * @description: Constant <br>
+ * @date: 2020/1/7 11:11 <br>
+ * @author: luoyl <br>
+ * @version: 1.0 <br>
  */
 public class Constant {
-    //常用整数
+    /**
+     * 常用整数
+     */
     public final static Integer COMMON_NUMBER_ZERO = 0;
     public final static Integer COMMON_NUMBER_ONE = 1;
     public final static Integer COMMON_NUMBER_TWO = 2;
@@ -17,7 +24,9 @@ public class Constant {
     public final static Integer COMMON_NUMBER_MB = 1024;
 
 
-    //统一信息识别码
+    /**
+     * 统一信息识别码
+     */
     public final static Integer SUCCESS_CODE = 200;
     public final static Integer ERROR_CODE = 1;
     public final static String SUCCESS_MESSAGE = "成功";
@@ -26,15 +35,21 @@ public class Constant {
     public final static String MESSAGE = "message";
     public final static String CONTENT = "content";
 
-    //用户类型
+    /**
+     * 用户类型
+     */
     public final static char USER_TYPE_MANAGER = '1';
     public final static char USER_TYPE_COMMON = '2';
 
-    //逻辑删除标志
+    /**
+     * 逻辑删除标志
+     */
     public final static char IS_DELETED = '1';
     public final static char NOT_DELETED = '0';
 
-    //session参数
+    /**
+     * session参数
+     */
     public final static String SESSION_INFO_PARAMS = "user_session_info";
     public final static String SESSION_INFO_PARAMS_CODE_EMAIL = "EMAIL_VERIFY_CODE";
     public final static String REQUEST_HEADER_CONTENT_TYPE = "Content-Type";
@@ -44,27 +59,41 @@ public class Constant {
     public final static String DISPOSITION_ATTACHMENT = "attachment;filename=";
 
 
-    //系统固有属性
+    /**
+     * 系统固有属性
+     */
     public final static String SYSTEM_PROPERTY = "os.name";
     public final static String WIN_SYSTEM_VERSION_LOWER_CASE = "win";
 
-    //RSA
+    /**
+     * RSA
+     */
     public final static String STRING_RSA = "RSA";
 
-    //rsa路径
+    /**
+     * rsa路径
+     */
     public final static String WIN_RSA_PRIVATE_KEY_PATH = "\\rsaPriKey.key";
     public final static String LINUX_RSA_PRIVATE_KEY_PATH = "/rsaPriKey.key";
 
     public final static String WIN_RSA_PUBLIC_KEY_PATH = "\\rsaPubKey.key";
     public final static String LINUX_RSA_PUBLIC_KEY_PATH = "/rsaPubKey.key";
 
-    //系统编码
+    /**
+     * 系统编码
+     */
     public final static String CODING_TYPE_UTF8 = "UTF-8";
 
 
-    //邮件验证码默认主题
+    /**
+     * 邮件验证码默认主题
+     */
     public final static String EMAIL_VERIFY_CODE_TITLE_DEFAULT = "邮件验证码";
 
+
+    /**
+     * 文件格式
+     */
     public final static String IMAGE_TYPE_PNG = "png";
     public final static String IMAGE_TYPE_JPG = "jpg";
 }

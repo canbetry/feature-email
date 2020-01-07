@@ -6,6 +6,13 @@ import lombok.Data;
 
 import java.util.Date;
 
+
+/**
+ * @description: TotalEmailVo <br>
+ * @date: 2020/1/7 11:02 <br>
+ * @author: luoyl <br>
+ * @version: 1.0 <br>
+ */
 @Data
 @ApiModel("邮件总表对象实体")
 public class TotalEmailVo {

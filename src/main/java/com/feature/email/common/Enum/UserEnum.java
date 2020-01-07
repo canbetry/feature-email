@@ -4,7 +4,10 @@ import com.feature.email.common.inteface.BaseBussinessStatus;
 
 
 /**
- * 用户模块异常信息
+ * @description: UserEnum <br>
+ * @date: 2020/1/7 11:11 <br>
+ * @author: luoyl <br>
+ * @version: 1.0 <br>
  */
 public enum UserEnum implements BaseBussinessStatus {
     $encryptPwdFail(1001, "加密密码失败"),

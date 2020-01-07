@@ -8,6 +8,13 @@ import lombok.Data;
 
 import java.util.Date;
 
+
+/**
+ * @description: SendEmail <br>
+ * @date: 2020/1/7 11:09 <br>
+ * @author: luoyl <br>
+ * @version: 1.0 <br>
+ */
 @ApiModel("寄件表,已经寄出去的邮件表")
 @Data
 public class SendEmail extends CommonEntity {

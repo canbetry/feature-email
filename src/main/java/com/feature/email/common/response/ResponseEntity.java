@@ -1,4 +1,4 @@
-package com.feature.email.common.Response;
+package com.feature.email.common.response;
 
 import com.feature.email.common.Enum.Constant;
 import com.feature.email.common.inteface.BaseBussinessStatus;
@@ -6,7 +6,12 @@ import com.feature.email.common.inteface.BaseBussinessStatus;
 import java.io.Serializable;
 
 /**
- * 自定义返回响应类
+ * 统一响应类
+ *
+ * @description: ResponseEntity <br>
+ * @date: 2020/1/7 11:09 <br>
+ * @author: luoyl <br>
+ * @version: 1.0 <br>
  */
 public class ResponseEntity<T> implements Serializable {
 

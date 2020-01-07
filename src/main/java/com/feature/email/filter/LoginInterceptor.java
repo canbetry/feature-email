@@ -14,6 +14,10 @@ import java.util.List;
 
 /**
  * 自定义过滤，登录拦截
+ * @description: LoginInterceptor <br>
+ * @date: 2020/1/7 10:58 <br>
+ * @author: luoyl <br>
+ * @version: 1.0 <br>
  */
 @Log4j2
 public class LoginInterceptor extends HandlerInterceptorAdapter {

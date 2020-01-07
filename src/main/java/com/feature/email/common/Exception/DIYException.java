@@ -2,7 +2,10 @@ package com.feature.email.common.Exception;
 
 
 /**
- * 自定义异常类
+ * @description: DIYException <br>
+ * @date: 2020/1/7 11:11 <br>
+ * @author: luoyl <br>
+ * @version: 1.0 <br>
  */
 public class DIYException extends RuntimeException {
     public DIYException() {

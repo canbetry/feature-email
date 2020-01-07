@@ -45,6 +45,7 @@ public class BufferedImageLuminanceSource extends LuminanceSource {
         this.top = top;
     }
 
+    @Override
     public byte[] getRow(int y, byte[] row) {
         if (y < 0 || y >= getHeight()) {
             throw new IllegalArgumentException(
@@ -58,6 +59,7 @@ public class BufferedImageLuminanceSource extends LuminanceSource {
         return row;
     }
 
+    @Override
     public byte[] getMatrix() {
         int width = getWidth();
         int height = getHeight();
@@ -67,19 +69,23 @@ public class BufferedImageLuminanceSource extends LuminanceSource {
         return matrix;
     }
 
+    @Override
     public boolean isCropSupported() {
         return true;
     }
 
+    @Override
     public LuminanceSource crop(int left, int top, int width, int height) {
         return new BufferedImageLuminanceSource(image, this.left + left,
                 this.top + top, width, height);
     }
 
+    @Override
     public boolean isRotateSupported() {
         return true;
     }
 
+    @Override
     public LuminanceSource rotateCounterClockwise() {
         int sourceWidth = image.getWidth();
         int sourceHeight = image.getHeight();

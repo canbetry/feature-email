@@ -2,7 +2,7 @@ package com.feature.email.service.mail;
 
 import com.feature.email.common.Enum.BaseErrorMsg;
 import com.feature.email.common.Enum.UserEnum;
-import com.feature.email.common.Response.ResponseEntity;
+import com.feature.email.common.response.ResponseEntity;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,6 +14,13 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.File;
 
+
+/**
+ * @description: MailService <br>
+ * @date: 2020/1/7 10:58 <br>
+ * @author: luoyl <br>
+ * @version: 1.0 <br>
+ */
 @Service("mailService")
 @Log4j2
 public class MailService {

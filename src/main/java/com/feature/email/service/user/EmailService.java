@@ -2,7 +2,7 @@ package com.feature.email.service.user;
 
 
 import com.feature.email.common.Enum.EmailEnum;
-import com.feature.email.common.Response.ResponseEntity;
+import com.feature.email.common.response.ResponseEntity;
 import com.feature.email.dao.email.SendEmailMapper;
 import com.feature.email.dao.email.TotalEmailMapper;
 import com.feature.email.entity.email.SendEmail;
@@ -16,6 +16,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @description: EmailService <br>
+ * @date: 2020/1/7 10:58 <br>
+ * @author: luoyl <br>
+ * @version: 1.0 <br>
+ */
 @SuppressWarnings("all")
 @Log4j2
 @Service("emailService")

@@ -17,23 +17,35 @@ import java.util.Map;
 
 
 /**
- * RSA加密工具类
+ * @description: RsaEncrypt <br>
+ * @date: 2020/1/7 10:46 <br>
+ * @author: luoyl <br>
+ * @version: 1.0 <br>
  */
 @SuppressWarnings("all")
 @Log4j2
 public class RsaEncrypt {
 
-    private static Map<Integer, String> keyMap = new HashMap<Integer, String>();  //用于封装随机产生的公钥与私钥
+    /**
+     * 用于封装随机产生的公钥与私钥
+     */
+    private static Map<Integer, String> keyMap = new HashMap<Integer, String>();
 
-    //路径
+    /**
+     * 路径
+     */
     private static String keyFilePathLinux = "/home/rsaKey";
     private static String keyFilePathWindows = "D:\\\\rsaKey";
 
-    //Linux密钥
+    /**
+     * Linux密钥
+     */
     private static String linuxPriKeyPath = "/home/rsaKey/rsaPriKey.key";
     private static String linuxPubKeyPath = "/home/rsaKey/rsaPubKey.key";
 
-    //windows密钥
+    /**
+     * windows密钥
+     */
     private static String windosPriKeyPath = "D:\\rsaKey\\rsaPriKey.key";
     private static String windosPubKeyPath = "D:\\rsaKey\\rsaPubKey.key";
 

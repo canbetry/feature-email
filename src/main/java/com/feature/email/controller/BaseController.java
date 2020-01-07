@@ -10,7 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 
 
 /**
- * 通用基础控制器，存放常用方法
+ * 通用基础
+ *
+ * @description: BaseController <br>
+ * @date: 2020/1/7 11:03 <br>
+ * @author: luoyl <br>
+ * @version: 1.0 <br>
  */
 @Log4j2
 public class BaseController {

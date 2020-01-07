@@ -11,6 +11,12 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @description: RedisUtils <br>
+ * @date: 2020/1/7 11:09 <br>
+ * @author: luoyl <br>
+ * @version: 1.0 <br>
+ */
 @Component
 @Log4j2
 @SuppressWarnings("all")

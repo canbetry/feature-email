@@ -3,7 +3,7 @@ package com.feature.email.controller.user;
 import com.feature.email.common.Enum.BaseErrorMsg;
 import com.feature.email.common.Enum.Constant;
 import com.feature.email.common.Enum.UserEnum;
-import com.feature.email.common.Response.ResponseEntity;
+import com.feature.email.common.response.ResponseEntity;
 import com.feature.email.controller.BaseController;
 import com.feature.email.entityVo.user.UserPwdVo;
 import com.feature.email.entityVo.user.UserVo;
@@ -29,6 +29,13 @@ import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
+
+/**
+ * @description: UserController <br>
+ * @date: 2020/1/7 10:46 <br>
+ * @author: luoyl <br>
+ * @version: 1.0 <br>
+ */
 @RestController
 @Log4j2
 @Api(description = "用户相关接口")

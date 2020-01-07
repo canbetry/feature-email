@@ -6,6 +6,13 @@ import lombok.Data;
 
 import java.io.Serializable;
 
+
+/**
+ * @description: UserVo <br>
+ * @date: 2020/1/7 11:02 <br>
+ * @author: luoyl <br>
+ * @version: 1.0 <br>
+ */
 @Data
 @ApiModel("用户聚合信息表")
 public class UserVo implements Serializable {
