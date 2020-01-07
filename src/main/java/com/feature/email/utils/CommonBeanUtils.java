@@ -33,11 +33,13 @@ public class CommonBeanUtils {
             Field[] fields = getAllFields(object.getClass());
             for (int i = 0; i < fields.length; i++) {
                 Field field = fields[i];
-                field.setAccessible(true);  //暴力反射
+                //暴力反射
+                field.setAccessible(true);
                 Object val = field.get(object);
                 String type = field.getType().toString();
                 if (type.endsWith("String")) {
-                    if (null != val && ("".equals(val.toString()) || "NULL".equals(val.toString().toUpperCase()))) {
+                    boolean result = null != val && ("".equals(val.toString()) || "NULL".equals(val.toString().toUpperCase()));
+                    if (result) {
                         field.set(object, null);
                     }
                 }
@@ -111,7 +113,6 @@ public class CommonBeanUtils {
      * 包含时分秒日期字符串转为日期格式
      *
      * @param dateStr
-     * @param pattern
      * @return
      */
     public static Date dateStrFormatterToDateHMS(String dateStr) {
