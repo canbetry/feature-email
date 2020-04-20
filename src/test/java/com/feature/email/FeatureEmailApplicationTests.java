@@ -150,12 +150,12 @@ class FeatureEmailApplicationTests {
         }
         System.out.println("++++++++++成功+++++++++++++");
     }
-
-    @Autowired
-    private RedisUtils redisUtils;
-
-    @Value("${spring-redis-session-name-pre}")
-    private String redisPre;
+//
+//    @Autowired
+//    private RedisUtils redisUtils;
+//
+//    @Value("${spring-redis-session-name-pre}")
+//    private String redisPre;
 
     @Autowired
     private MailService mailService;
@@ -167,7 +167,7 @@ class FeatureEmailApplicationTests {
         } catch (MessagingException e) {
             e.printStackTrace();
         }
-        System.out.println(redisUtils.get(redisPre + "test"));
+//        System.out.println(redisUtils.get(redisPre + "test"));
     }
 
     @Value("${spring.datasource.username}")

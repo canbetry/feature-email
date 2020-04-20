@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  * @description: CommonEntity <br>
- * @date: 2020/1/7 11:13 <br>
+ * @date: 2020/1/7 11:41 <br>
  * @author: luoyl <br>
  * @version: 1.0 <br>
  */

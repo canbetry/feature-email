@@ -23,6 +23,7 @@ import java.io.File;
  */
 @Service("mailService")
 @Log4j2
+@SuppressWarnings("all")
 public class MailService {
 
     @Autowired
@@ -33,7 +34,6 @@ public class MailService {
 
 
     /**
-     *
      * @param toEmailAddr
      * @param title
      * @param text
@@ -54,7 +54,8 @@ public class MailService {
         helper.setText(text);
         //附件
         if (attachments != null) {
-            if (attachments.length != 2) {
+            int atLength = 2;
+            if (attachments.length != atLength) {
                 log.error(BaseErrorMsg.argsLengthError);
                 return ResponseEntity.errorInfo(UserEnum.$systemException);
             }
